@@ -13,21 +13,9 @@
     <projectFile profileName="IIS Express">BettingAgency.Persistence.Abstraction/BettingAgency.Persistence.Abstraction.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="Seed data">
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/UserDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application/Common/Profile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BettingAgency/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BettingAgency/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/BettingAgency.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/BettingAgency.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" afterDir="false" />
+    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="Implemented async">
       <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/BettingAgency.Application.Abstraction.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/BettingAgency.Application.Abstraction.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/IServices/IGameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/IServices/IGameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/Users.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Entities/UserEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Entities/UserEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Interfaces/IGameRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Interfaces/IGameRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence/Repositories/GameRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence/Repositories/GameRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +227,7 @@
       <workItem from="1649010892282" duration="2126000" />
       <workItem from="1649665045915" duration="1943000" />
       <workItem from="1649682471066" duration="5376000" />
-      <workItem from="1649691315971" duration="5994000" />
+      <workItem from="1649691315971" duration="6340000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring the code">
       <created>1649665315563</created>
@@ -262,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649695108372</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented async">
+      <created>1649697582758</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649697582758</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +286,8 @@
     <MESSAGE value="Refactoring the code" />
     <MESSAGE value="Implemented the repository" />
     <MESSAGE value="Seed data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seed data" />
+    <MESSAGE value="Implemented async" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented async" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -301,10 +297,10 @@
           <line>22</line>
           <properties documentPath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" initialLine="22" containingFunctionPresentation="constructor 'TokenService'">
             <startOffsets>
-              <option value="805" />
+              <option value="821" />
             </startOffsets>
             <endOffsets>
-              <option value="806" />
+              <option value="822" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

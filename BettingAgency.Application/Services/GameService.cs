@@ -14,16 +14,16 @@ public class GameService : IGameService
 
     private readonly IGameRepository _repository;
 
-    // private readonly ITokenService _tokenService;
+    private readonly ITokenService _tokenService;
     private int _accountBalance = 10000;
 
     public GameService(IGameRepository repository, JwtSettings jwtSettings,
-        IMapper mapper) //, ITokenService tokenService)
+        IMapper mapper, ITokenService tokenService)
     {
         _repository = repository;
         _jwtSettings = jwtSettings;
         _mapper = mapper;
-        // _tokenService = tokenService;
+        _tokenService = tokenService;
     }
 
     public async Task<string> PlaceBet(Request req, CancellationToken ct)
@@ -63,27 +63,7 @@ public class GameService : IGameService
 
         return $"{winningStatement}. The number was :{randomNumber}. You new Balance is: {_accountBalance}";
     }
-
-    public async Task<UserTokens> GetToken(UserLogins userLogins, CancellationToken ct)
-    {
-        var Token = new UserTokens();
-        var logins = await _repository.GetUsers(ct);
-        var Valid = logins.Any(x => x.UserName.Equals(userLogins.UserName, StringComparison.OrdinalIgnoreCase));
-        if (Valid)
-        {
-            var user = logins.FirstOrDefault(x =>
-                x.UserName.Equals(userLogins.UserName, StringComparison.OrdinalIgnoreCase));
-            Token = JwtHelpers.GenTokenkey(new UserTokens
-            {
-                EmailId = user.Email,
-                UserName = user.UserName,
-                Id = Guid.NewGuid()
-            }, _jwtSettings);
-            return Token;
-        }
-
-        return null;
-    }
+    
 
     public async Task<List<UserDto>> GetAllUsers(CancellationToken ct)
     {

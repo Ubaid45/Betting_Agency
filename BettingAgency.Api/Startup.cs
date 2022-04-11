@@ -1,3 +1,5 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Net.Mime;
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models.JWT;
 using BettingAgency.Application.Common;
@@ -31,12 +33,15 @@ public class Startup
             .ValidateDataAnnotations();
         services.AddAutoMapper(typeof(AutoMapperProfile));
         services.AddScoped<IGameService, GameService>();
-//builder.Services.AddTransient<ITokenService, TokenService>();
+        services.AddScoped<ITokenService, TokenService>();
 
         services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("BettingAgency"));
         services.AddScoped<IApiContext, ApiContext>();
         services.AddScoped<IGameRepository, GameRepository>();
+        services.AddHttpClient("JwtTokenClient",
+            c => { c.DefaultRequestHeaders.Add("Accept", MediaTypeNames.Application.Json); });
 
+        services.AddScoped<JwtSecurityTokenHandler>();
         services.AddControllers();
         services.AddSwaggerGen(options =>
         {

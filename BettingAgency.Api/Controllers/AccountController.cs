@@ -11,16 +11,19 @@ namespace BettingAgency.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IGameService _gameService;
+    private readonly ITokenService _tokenService;
 
-    public AccountController(IGameService gameService)
+    public AccountController(IGameService gameService, ITokenService tokenService)
     {
         _gameService = gameService;
+        _tokenService = tokenService;
     }
 
     [HttpPost]
     public async Task<IActionResult> GetToken(UserLogins userLogins, CancellationToken ct)
     {
-        var token = await _gameService.GetToken(userLogins, ct);
+        var users = await _gameService.GetAllUsers(ct);
+        var token = _tokenService.GetToken(userLogins, users);
         return token == null ? BadRequest("wrong password") : Ok(token);
     }
 
