@@ -24,7 +24,7 @@ public class GameRepository : IGameRepository
         return await GetUserDetails(user.Id, cancellationToken);
     }
 
-    public async Task<IEnumerable<UserEntity>> GetUsers(CancellationToken cancellationToken)
+    public async Task<List<UserEntity>> GetUsers(CancellationToken cancellationToken)
     {
         return await _context.Users.ToListAsync(cancellationToken);
     }

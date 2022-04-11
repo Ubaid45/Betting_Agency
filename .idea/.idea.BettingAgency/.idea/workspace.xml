@@ -13,9 +13,9 @@
     <projectFile profileName="IIS Express">BettingAgency.Persistence.Abstraction/BettingAgency.Persistence.Abstraction.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="Implemented async">
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" afterDir="false" />
+    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="applied refactoring">
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +227,7 @@
       <workItem from="1649010892282" duration="2126000" />
       <workItem from="1649665045915" duration="1943000" />
       <workItem from="1649682471066" duration="5376000" />
-      <workItem from="1649691315971" duration="6340000" />
+      <workItem from="1649691315971" duration="6831000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring the code">
       <created>1649665315563</created>
@@ -257,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649697582758</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="applied refactoring">
+      <created>1649698212936</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649698212936</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,33 +294,21 @@
     <MESSAGE value="Implemented the repository" />
     <MESSAGE value="Seed data" />
     <MESSAGE value="Implemented async" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented async" />
+    <MESSAGE value="applied refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="applied refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs</url>
-          <line>22</line>
-          <properties documentPath="$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs" initialLine="22" containingFunctionPresentation="constructor 'TokenService'">
-            <startOffsets>
-              <option value="821" />
-            </startOffsets>
-            <endOffsets>
-              <option value="822" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs</url>
-          <line>23</line>
+          <url>file://$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs</url>
+          <line>26</line>
           <properties documentPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" initialLine="30" containingFunctionPresentation="method 'GetToken'">
             <startOffsets>
-              <option value="714" />
+              <option value="851" />
             </startOffsets>
             <endOffsets>
-              <option value="778" />
+              <option value="915" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
