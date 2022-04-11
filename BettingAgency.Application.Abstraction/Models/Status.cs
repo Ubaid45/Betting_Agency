@@ -1,7 +1,9 @@
+using System.ComponentModel;
+
 namespace BettingAgency.Application.Abstraction.Models;
 
 public enum Status
 {
-    Won,
-    Lost
+    [Description("Won")] Won,
+    [Description("Lost")] Lost
 }
