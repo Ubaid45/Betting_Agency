@@ -1,4 +1,4 @@
-namespace BettingAgency.Application.Models.JWT;
+namespace BettingAgency.Application.Abstraction.Models.JWT;
 public class JwtSettings {
     public bool ValidateIssuerSigningKey {
         get;

@@ -1,5 +1,4 @@
-using BettingAgency.Application.Models;
-using BettingAgency.Application.Models.JWT;
+using BettingAgency.Application.Abstraction.Models.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

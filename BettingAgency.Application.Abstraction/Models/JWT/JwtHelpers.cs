@@ -2,7 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BettingAgency.Application.Models.JWT;
+namespace BettingAgency.Application.Abstraction.Models.JWT;
 
 public static class JwtHelpers {
     public static IEnumerable < Claim > GetClaims(this UserTokens userAccounts, Guid Id) {

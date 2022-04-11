@@ -7,7 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+      <ProjectReference Include="..\BettingAgency.Application.Abstraction\BettingAgency.Application.Abstraction.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\JWT" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="berkeley.db.v140" Version="5.3.28.3" />
+      <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.3" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>
 
 </Project>

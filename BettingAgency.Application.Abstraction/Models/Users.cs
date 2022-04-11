@@ -1,4 +1,4 @@
-namespace BettingAgency.Application.Models;
+namespace BettingAgency.Application.Abstraction.Models;
 
 public class Users {
     public string UserName {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BettingAgency.Application.Models {
+namespace BettingAgency.Application.Abstraction.Models {
     public class UserLogins {
         [Required]
         public string UserName {

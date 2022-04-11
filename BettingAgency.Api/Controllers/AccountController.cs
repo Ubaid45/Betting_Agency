@@ -1,5 +1,5 @@
-using BettingAgency.Application.Models;
-using BettingAgency.Application.Models.JWT;
+using BettingAgency.Application.Abstraction.Models;
+using BettingAgency.Application.Abstraction.Models.JWT;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

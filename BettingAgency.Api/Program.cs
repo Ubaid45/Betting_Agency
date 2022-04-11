@@ -1,9 +1,12 @@
+using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Extensions;
+using BettingAgency.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddJwtTokenServices(builder.Configuration);
+builder.Services.AddTransient<IGameService, GameService>();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme {
