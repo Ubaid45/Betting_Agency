@@ -74,9 +74,10 @@ public class Startup
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DU.User.Api v1"));
         }
+
         var scope = app.ApplicationServices.CreateScope();
         var context = scope.ServiceProvider.GetService<IApiContext>();
-        AddTestData(context);
+        SeedData(context);
 
         app.UseHttpsRedirection();
 
@@ -95,13 +96,14 @@ public class Startup
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 
-    private static void AddTestData(IApiContext? context)
+    private static void SeedData(IApiContext? context)
     {
+        var count = 0;
         IEnumerable<UserEntity> userList = new List<UserEntity>
         {
             new()
             {
-                Id = Guid.NewGuid(),
+                Id = count++,
                 Email = "adminakp@gmail.com",
                 UserName = "Admin",
                 Password = "Admin",
@@ -110,7 +112,7 @@ public class Startup
             },
             new()
             {
-                Id = Guid.NewGuid(),
+                Id = count++,
                 Email = "adminakp@gmail.com",
                 UserName = "User1",
                 Password = "Admin",
@@ -119,7 +121,6 @@ public class Startup
             }
         };
         context.Users.AddRange(userList);
-        context.SaveChanges();
 
         context.SaveChanges();
     }
