@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAgency.Application.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAgency.Application", "BettingAgency.Application\BettingAgency.Application.csproj", "{DB5EA518-B87F-479C-AFF7-89DE8B268BE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAgency.Persistence", "BettingAgency.Persistence\BettingAgency.Persistence.csproj", "{E558AC9D-3E1F-4A9D-9880-E99988027865}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingAgency.Persistence.Abstraction", "BettingAgency.Persistence.Abstraction\BettingAgency.Persistence.Abstraction.csproj", "{67D79018-9B05-494B-A850-240F83B2D1F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{DB5EA518-B87F-479C-AFF7-89DE8B268BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB5EA518-B87F-479C-AFF7-89DE8B268BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB5EA518-B87F-479C-AFF7-89DE8B268BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E558AC9D-3E1F-4A9D-9880-E99988027865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E558AC9D-3E1F-4A9D-9880-E99988027865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E558AC9D-3E1F-4A9D-9880-E99988027865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E558AC9D-3E1F-4A9D-9880-E99988027865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D79018-9B05-494B-A850-240F83B2D1F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D79018-9B05-494B-A850-240F83B2D1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D79018-9B05-494B-A850-240F83B2D1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D79018-9B05-494B-A850-240F83B2D1F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -8,10 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BettingAgency.Application.Abstraction\BettingAgency.Application.Abstraction.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\JWT" />
+      <ProjectReference Include="..\BettingAgency.Persistence.Abstraction\BettingAgency.Persistence.Abstraction.csproj" />
     </ItemGroup>
 
     <ItemGroup>

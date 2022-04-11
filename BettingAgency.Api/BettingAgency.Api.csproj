@@ -10,12 +10,15 @@
     <ItemGroup>
         <PackageReference Include="berkeley.db.v140" Version="5.3.28.3" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.5" />
         <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\BettingAgency.Application\BettingAgency.Application.csproj" />
+      <ProjectReference Include="..\BettingAgency.Persistence.Abstraction\BettingAgency.Persistence.Abstraction.csproj" />
+      <ProjectReference Include="..\BettingAgency.Persistence\BettingAgency.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

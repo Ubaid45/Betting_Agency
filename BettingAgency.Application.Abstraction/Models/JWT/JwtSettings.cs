@@ -32,4 +32,8 @@ public class JwtSettings {
         get;
         set;
     } = true;
+
+    public string CertificatePath { get; set; }
+    public string Issuer { get; set; }
+    public string Audience { get; set; }
 }
