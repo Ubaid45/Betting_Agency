@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace BettingAgency.Application.Abstraction.Models;
 
 public class Request
 {
-    public int Points { get; set; }
-    public int Number { get; set; }
+    [Range(1, 1000)] public int Points { get; set; }
+
+    [Range(0, 9)] public int Number { get; set; }
 }

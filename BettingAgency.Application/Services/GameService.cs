@@ -20,6 +20,11 @@ public class GameService : IGameService
 
     public async Task<string> PlaceBet(Request req, string email, CancellationToken ct)
     {
+        var users = await _repository.GetUsers(ct);
+        var user = users[0];
+
+        if (user.Balance == 0) return "Sorry, you do not have enough balance to play the game.";
+
         var userEntity = await  _repository.GetUserDetailsByEmail(email, ct);
         var user = _mapper.Map<UserEntity, UserDto>(userEntity);
         var guessNumber = req.Number;
@@ -42,19 +47,25 @@ public class GameService : IGameService
         {
             prize = stake * Factor;
 
-            //add prize to the database
-            user.Balance -= prize;
-            gewonnen = false;
+            if (user.Balance - prize <= 0)
+            {
+                user.Balance = 0;
+                gewonnen = false;
+            }
+            else
+            {
+                user.Balance -= prize;
+                gewonnen = false;
+            }
         }
 
+
+        await _repository.UpdateUser(user, ct);
 
         var winningStatement = "Congratulations, You won the bet";
-        if (!gewonnen)
-        {
-            winningStatement = "Unfortunately, you have lost the bet";
-        }
+        if (!gewonnen) winningStatement = "Unfortunately, you have lost the bet";
 
-        return $"{winningStatement}. The number was :{randomNumber}. You new Balance is: {user.Balance}";
+        return $"{winningStatement}. The number was {randomNumber}. You new Balance is: {user.Balance}";
     }
 
 
