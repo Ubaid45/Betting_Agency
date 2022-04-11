@@ -1,9 +1,10 @@
 using BettingAgency.Persistence.Abstraction.Entities;
 using BettingAgency.Persistence.Abstraction.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BettingAgency.Persistence.Repositories;
 
-public class GameRepository: IGameRepository
+public class GameRepository : IGameRepository
 {
     private readonly ApiContext _context;
 
@@ -12,13 +13,24 @@ public class GameRepository: IGameRepository
         _context = context;
     }
 
-    public List<UserEntity> GetUsers()
+    public async Task<UserEntity> UpdateUser(UserEntity user, CancellationToken cancellationToken)
     {
-        return _context.Users.ToList();
+        user.Timestamp = DateTime.UtcNow;
+        _context.Entry(await _context.Users.FirstOrDefaultAsync(x => x.Id == user.Id, cancellationToken))
+            .CurrentValues.SetValues(user);
+
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return await GetUserDetails(user.Id, cancellationToken);
     }
 
-    public UserEntity GetUserDetails(int id)
+    public async Task<IEnumerable<UserEntity>> GetUsers(CancellationToken cancellationToken)
     {
-        return _context.Users.FirstOrDefault(m => m.Id == id);
+        return await _context.Users.ToListAsync(cancellationToken);
+    }
+
+    public async Task<UserEntity> GetUserDetails(int id, CancellationToken cancellationToken)
+    {
+        return await _context.Users.FirstOrDefaultAsync(m => m.Id == id, cancellationToken);
     }
 }

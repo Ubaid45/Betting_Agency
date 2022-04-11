@@ -13,21 +13,21 @@
     <projectFile profileName="IIS Express">BettingAgency.Persistence.Abstraction/BettingAgency.Persistence.Abstraction.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Api/BettingAgencyDB.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/IServices/ITokenService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/ErrorCodes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/UserModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application/Exceptions/HttpStatusException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BettingAgency.Application/Middleware/a.cs" afterDir="false" />
+    <list default="true" id="2dce9c09-85ed-4f7f-9634-ed7eb805d8a5" name="Changes" comment="Seed data">
+      <change afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/UserDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BettingAgency.Application/Common/Profile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BettingAgency/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BettingAgency/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BettingAgency.Api/BettingAgency.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/BettingAgency.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/JWT/JwtSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/JWT/JwtSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.Application/BettingAgency.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application/BettingAgency.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Api/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/BettingAgency.Application.Abstraction.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/BettingAgency.Application.Abstraction.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/IServices/IGameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/IServices/IGameService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Application.Abstraction/Models/Users.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BettingAgency.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Entities/UserEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Entities/UserEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Interfaces/IGameRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence.Abstraction/Interfaces/IGameRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BettingAgency.Persistence/Repositories/GameRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BettingAgency.Persistence/Repositories/GameRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +239,7 @@
       <workItem from="1649010892282" duration="2126000" />
       <workItem from="1649665045915" duration="1943000" />
       <workItem from="1649682471066" duration="5376000" />
-      <workItem from="1649691315971" duration="3289000" />
+      <workItem from="1649691315971" duration="5994000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring the code">
       <created>1649665315563</created>
@@ -248,7 +248,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649665315563</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implemented the repository">
+      <created>1649694812743</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649694812743</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Seed data">
+      <created>1649695108372</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649695108372</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,24 +289,13 @@
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Refactoring the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring the code" />
+    <MESSAGE value="Implemented the repository" />
+    <MESSAGE value="Seed data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seed data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs</url>
-          <line>22</line>
-          <properties documentPath="$PROJECT_DIR$/BettingAgency.Application/Services/GameService.cs" initialLine="22" containingFunctionPresentation="method 'PlaceBet'">
-            <startOffsets>
-              <option value="660" />
-            </startOffsets>
-            <endOffsets>
-              <option value="683" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BettingAgency.Application/Services/TokenService.cs</url>
           <line>22</line>
@@ -308,13 +311,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs</url>
-          <line>30</line>
+          <line>23</line>
           <properties documentPath="$PROJECT_DIR$/BettingAgency.Api/Controllers/AccountController.cs" initialLine="30" containingFunctionPresentation="method 'GetToken'">
             <startOffsets>
-              <option value="1150" />
+              <option value="714" />
             </startOffsets>
             <endOffsets>
-              <option value="1179" />
+              <option value="778" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />

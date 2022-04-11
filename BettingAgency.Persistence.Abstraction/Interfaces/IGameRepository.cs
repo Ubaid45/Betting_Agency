@@ -4,6 +4,7 @@ namespace BettingAgency.Persistence.Abstraction.Interfaces;
 
 public interface IGameRepository
 {
-    List<UserEntity> GetUsers();
-    UserEntity GetUserDetails(int id);
+    Task<IEnumerable<UserEntity>> GetUsers(CancellationToken cancellationToken);
+    Task<UserEntity> GetUserDetails(int id, CancellationToken cancellationToken);
+    Task<UserEntity> UpdateUser(UserEntity user, CancellationToken cancellationToken);
 }

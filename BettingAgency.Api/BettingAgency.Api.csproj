@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="berkeley.db.v140" Version="5.3.28.3" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.3" />

@@ -16,9 +16,9 @@ public class GameController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult PlaceBet(Request request)
+    public async Task<IActionResult> PlaceBet(Request request, CancellationToken ct)
     {
-       var res = _gameService.PlaceBet(request);
+        var res = await _gameService.PlaceBet(request, ct);
         return Ok(res);
     }
 }

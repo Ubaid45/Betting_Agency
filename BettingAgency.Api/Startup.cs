@@ -1,5 +1,6 @@
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models.JWT;
+using BettingAgency.Application.Common;
 using BettingAgency.Application.Extensions;
 using BettingAgency.Application.Middleware;
 using BettingAgency.Application.Services;
@@ -28,7 +29,7 @@ public class Startup
         services.AddOptions<JwtSettings>()
             .Bind(Configuration.GetSection(nameof(JwtSettings)))
             .ValidateDataAnnotations();
-
+        services.AddAutoMapper(typeof(AutoMapperProfile));
         services.AddScoped<IGameService, GameService>();
 //builder.Services.AddTransient<ITokenService, TokenService>();
 
@@ -98,26 +99,25 @@ public class Startup
 
     private static void SeedData(IApiContext? context)
     {
-        var count = 0;
         IEnumerable<UserEntity> userList = new List<UserEntity>
         {
             new()
             {
-                Id = count++,
                 Email = "adminakp@gmail.com",
                 UserName = "Admin",
                 Password = "Admin",
                 FullName = "Administrator",
-                Balance = 10000
+                Balance = 10000,
+                Timestamp = DateTime.Now
             },
             new()
             {
-                Id = count++,
                 Email = "adminakp@gmail.com",
                 UserName = "User1",
                 Password = "Admin",
                 FullName = "User 1",
-                Balance = 10000
+                Balance = 10000,
+                Timestamp = DateTime.Now
             }
         };
         context.Users.AddRange(userList);

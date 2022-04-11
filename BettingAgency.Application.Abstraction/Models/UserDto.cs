@@ -1,12 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace BettingAgency.Application.Abstraction.Models;
 
-namespace BettingAgency.Persistence.Abstraction.Entities;
-
-public class UserEntity
+public class UserDto
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     public string FullName { get; set; }
