@@ -1,7 +1,6 @@
 using AutoMapper;
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models;
-using BettingAgency.Persistence.Abstraction.Entities;
 using BettingAgency.Persistence.Abstraction.Interfaces;
 
 namespace BettingAgency.Application.Services;

@@ -12,5 +12,10 @@ namespace BettingAgency.Persistence
         }
 
         public DbSet<UserEntity?> Users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(p => new {p.Email, p.UserName}).IsUnique();
+        }
     }
 }

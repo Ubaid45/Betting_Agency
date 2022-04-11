@@ -58,7 +58,34 @@ public class Startup
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JsonWebTokenKeys:Secret"]))    
                 };    
             });
-        services.AddSwaggerGen();
+       
+        services.AddSwaggerGen(setup =>
+        {
+            // Include 'SecurityScheme' to use JWT Authentication
+            var jwtSecurityScheme = new OpenApiSecurityScheme
+            {
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                Name = "JWT Authentication",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http,
+                Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
+
+                Reference = new OpenApiReference
+                {
+                    Id = JwtBearerDefaults.AuthenticationScheme,
+                    Type = ReferenceType.SecurityScheme
+                }
+            };
+
+            setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+            setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                { jwtSecurityScheme, Array.Empty<string>() }
+            });
+
+        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,19 +125,29 @@ public class Startup
         {
             new()
             {
-                Email = "adminakp@gmail.com",
-                UserName = "admin",
-                Password = "admin",
-                FullName = "Administrator",
+                Email = "ubaid@gmail.com",
+                UserName = "ubaid45",
+                Password = "Ubaid",
+                FullName = "Ubaid Rana",
                 Balance = 10000,
                 Timestamp = DateTime.Now
             },
             new()
             {
-                Email = "adminakp@gmail.com",
-                UserName = "User1",
-                Password = "Admin",
-                FullName = "User 1",
+                Email = "mario@gmail.com",
+                UserName = "mario12",
+                Password = "Mario",
+                FullName = "Mario F.",
+                Balance = 10000,
+                Timestamp = DateTime.Now
+            }
+            ,
+            new()
+            {
+                Email = "alex@gmail.com",
+                UserName = "alex34",
+                Password = "Alex",
+                FullName = "Alex P.",
                 Balance = 10000,
                 Timestamp = DateTime.Now
             }

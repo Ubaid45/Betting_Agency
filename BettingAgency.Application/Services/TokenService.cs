@@ -42,7 +42,7 @@ public class TokenService : ITokenService
     {
         var user = await _repository.GetUserByCredentials(userLogins, ct);
         
-        if (user == null) return string.Empty;
+        if (user == null) throw new HttpStatusException(HttpStatusCode.NoContent, nameof(ErrorCodes.UserNotFound));
         
         return GenerateToken(_mapper.Map<UserEntity, UserDto>(user));
     }
