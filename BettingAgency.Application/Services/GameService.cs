@@ -1,6 +1,7 @@
 using AutoMapper;
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models;
+using BettingAgency.Persistence.Abstraction.Entities;
 using BettingAgency.Persistence.Abstraction.Interfaces;
 
 namespace BettingAgency.Application.Services;
@@ -17,10 +18,10 @@ public class GameService : IGameService
         _mapper = mapper;
     }
 
-    public async Task<string> PlaceBet(Request req, CancellationToken ct)
+    public async Task<string> PlaceBet(Request req, string email, CancellationToken ct)
     {
-        var users = await _repository.GetUsers(ct);
-        var user = users[0];
+        var userEntity = await  _repository.GetUserDetailsByEmail(email, ct);
+        var user = _mapper.Map<UserEntity, UserDto>(userEntity);
         var guessNumber = req.Number;
         var stake = req.Points;
         var prize = 0;
@@ -59,7 +60,7 @@ public class GameService : IGameService
 
     public async Task<List<UserDto>> GetAllUsers(CancellationToken ct)
     {
-        var users = await _repository.GetUsers(ct);
+        var users = await _repository.GetAllUsers(ct);
         return _mapper.Map<List<UserDto>>(users);
     }
 }

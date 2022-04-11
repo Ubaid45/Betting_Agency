@@ -1,3 +1,4 @@
+using BettingAgency.Application.Abstraction.Models;
 using BettingAgency.Persistence.Abstraction.Entities;
 using BettingAgency.Persistence.Abstraction.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,12 @@ public class GameRepository : IGameRepository
         _context = context;
     }
 
+    public async Task<UserEntity?> GetUserByCredentials(UserLogins user, CancellationToken cancellationToken)
+    {
+        return await _context.Users.FirstOrDefaultAsync(x => x.UserName.Equals(user.UserName, StringComparison.OrdinalIgnoreCase) &&
+                       x.Password.Equals(user.Password), cancellationToken: cancellationToken);
+ 
+    }
     public async Task<UserEntity> UpdateUser(UserEntity user, CancellationToken cancellationToken)
     {
         user.Timestamp = DateTime.UtcNow;
@@ -21,16 +28,16 @@ public class GameRepository : IGameRepository
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        return await GetUserDetails(user.Id, cancellationToken);
+        return await GetUserDetailsByEmail(user.Email, cancellationToken);
     }
 
-    public async Task<List<UserEntity>> GetUsers(CancellationToken cancellationToken)
+    public async Task<List<UserEntity?>> GetAllUsers(CancellationToken cancellationToken)
     {
         return await _context.Users.ToListAsync(cancellationToken);
     }
 
-    public async Task<UserEntity> GetUserDetails(int id, CancellationToken cancellationToken)
+    public async Task<UserEntity> GetUserDetailsByEmail(string email, CancellationToken cancellationToken)
     {
-        return await _context.Users.FirstOrDefaultAsync(m => m.Id == id, cancellationToken);
+        return await _context.Users.FirstOrDefaultAsync(m => m.Email == email, cancellationToken);
     }
 }
