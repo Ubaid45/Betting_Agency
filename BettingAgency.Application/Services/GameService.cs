@@ -18,10 +18,15 @@ public class GameService : IGameService
         _mapper = mapper;
     }
 
-    public async Task<string> PlaceBet(Request req, string email, CancellationToken ct)
-    public async Task<Response> PlaceBet(Request req, CancellationToken ct)
+    public async Task<List<UserDto>> GetAllUsers(CancellationToken ct)
     {
-        var userEntity = await  _repository.GetUserDetailsByEmail(email, ct);
+        var users = await _repository.GetAllUsers(ct);
+        return _mapper.Map<List<UserDto>>(users);
+    }
+
+    public async Task<Response> PlaceBet(Request req, string email, CancellationToken ct)
+    {
+        var user = await _repository.GetUserDetailsByEmail(email, ct);
 
         var guessNumber = req.Number;
         var stake = req.Points;
@@ -48,12 +53,6 @@ public class GameService : IGameService
             AccountBalance = user.Balance,
             Status = hasWon ? convertToString(Status.Won) : convertToString(Status.Lost)
         };
-    }
-
-    public async Task<List<UserDto>> GetAllUsers(CancellationToken ct)
-    {
-        var users = await _repository.GetAllUsers(ct);
-        return _mapper.Map<List<UserDto>>(users);
     }
 
     private void lostTheBet(int stake, UserEntity user)
