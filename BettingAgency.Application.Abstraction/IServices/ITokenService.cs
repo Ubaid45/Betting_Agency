@@ -5,6 +5,5 @@ namespace BettingAgency.Application.Abstraction.IServices;
 
 public interface ITokenService
 {
-    UserTokens GetToken(UserLogins userLogins, List<UserDto> logins);
-    Task<UserModel?> ValidateAuthToken(string token);
+    Task<string> GetToken(UserLogins userLogins, CancellationToken ct);
 }

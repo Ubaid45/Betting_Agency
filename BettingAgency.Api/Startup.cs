@@ -1,16 +1,18 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mime;
+using System.Text;
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models.JWT;
 using BettingAgency.Application.Common;
-using BettingAgency.Application.Extensions;
 using BettingAgency.Application.Middleware;
 using BettingAgency.Application.Services;
 using BettingAgency.Persistence;
 using BettingAgency.Persistence.Abstraction.Entities;
 using BettingAgency.Persistence.Abstraction.Interfaces;
 using BettingAgency.Persistence.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace BettingAgency;
@@ -27,9 +29,8 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddJwtTokenServices(Configuration);
-        services.AddOptions<JwtSettings>()
-            .Bind(Configuration.GetSection(nameof(JwtSettings)))
+        services.AddOptions<JsonWebTokenKeys>()
+            .Bind(Configuration.GetSection(nameof(JsonWebTokenKeys)))
             .ValidateDataAnnotations();
         services.AddAutoMapper(typeof(AutoMapperProfile));
         services.AddScoped<IGameService, GameService>();
@@ -43,31 +44,47 @@ public class Startup
 
         services.AddScoped<JwtSecurityTokenHandler>();
         services.AddControllers();
-        services.AddSwaggerGen(options =>
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)    
+            .AddJwtBearer(options =>    
+            {    
+                options.TokenValidationParameters = new TokenValidationParameters    
+                {    
+                    ValidateIssuer = true,    
+                    ValidateAudience = true,    
+                    ValidateLifetime = true,    
+                    ValidateIssuerSigningKey = true,    
+                    ValidIssuer = Configuration["JsonWebTokenKeys:ValidIssuer"],    
+                    ValidAudience = Configuration["JsonWebTokenKeys:ValidAudience"],    
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JsonWebTokenKeys:Secret"]))    
+                };    
+            });
+       
+        services.AddSwaggerGen(setup =>
         {
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            // Include 'SecurityScheme' to use JWT Authentication
+            var jwtSecurityScheme = new OpenApiSecurityScheme
             {
-                Name = "Authorization",
-                Type = SecuritySchemeType.Http,
-                Scheme = "Bearer",
+                Scheme = "bearer",
                 BearerFormat = "JWT",
+                Name = "JWT Authentication",
                 In = ParameterLocation.Header,
-                Description = "JWT Authorization header using the Bearer scheme."
-            });
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
+                Type = SecuritySchemeType.Http,
+                Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
+
+                Reference = new OpenApiReference
                 {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    new string[] { }
+                    Id = JwtBearerDefaults.AuthenticationScheme,
+                    Type = ReferenceType.SecurityScheme
                 }
+            };
+
+            setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+            setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                { jwtSecurityScheme, Array.Empty<string>() }
             });
+
         });
     }
 
@@ -96,7 +113,7 @@ public class Startup
 
 
         app.UseMiddleware<ExceptionMiddleware>();
-        //app.UseAuthentication();
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
@@ -104,23 +121,33 @@ public class Startup
 
     private static void SeedData(IApiContext? context)
     {
-        IEnumerable<UserEntity> userList = new List<UserEntity>
+        IEnumerable<UserEntity?> userList = new List<UserEntity?>
         {
             new()
             {
-                Email = "adminakp@gmail.com",
-                UserName = "Admin",
-                Password = "Admin",
-                FullName = "Administrator",
+                Email = "ubaid@gmail.com",
+                UserName = "ubaid45",
+                Password = "Ubaid",
+                FullName = "Ubaid Rana",
                 Balance = 10000,
                 Timestamp = DateTime.Now
             },
             new()
             {
-                Email = "adminakp@gmail.com",
-                UserName = "User1",
-                Password = "Admin",
-                FullName = "User 1",
+                Email = "mario@gmail.com",
+                UserName = "mario12",
+                Password = "Mario",
+                FullName = "Mario F.",
+                Balance = 10000,
+                Timestamp = DateTime.Now
+            }
+            ,
+            new()
+            {
+                Email = "alex@gmail.com",
+                UserName = "alex34",
+                Password = "Alex",
+                FullName = "Alex P.",
                 Balance = 10000,
                 Timestamp = DateTime.Now
             }

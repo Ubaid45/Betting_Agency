@@ -8,7 +8,7 @@ public interface IApiContext
 {
     DatabaseFacade Database { get; }
 
-    DbSet<UserEntity> Users { get; set; }
+    DbSet<UserEntity?> Users { get; set; }
 
     int SaveChanges();
 

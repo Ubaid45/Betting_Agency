@@ -1,5 +1,6 @@
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models;
+using BettingAgency.Application.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,8 @@ public class GameController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> GetToken(UserLogins userLogins, CancellationToken ct)
     {
-        var token = _tokenService.GetToken(userLogins, await _gameService.GetAllUsers(ct));
-        return token == null ? BadRequest("wrong password") : Ok(token);
+        var token = await _tokenService.GetToken(userLogins, ct);
+        return Ok(token);
     }
 
     /// <summary>
@@ -39,9 +40,10 @@ public class GameController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> PlaceBet(Request request, CancellationToken ct)
     {
-        var res = await _gameService.PlaceBet(request, ct);
+        var res = await _gameService.PlaceBet(request,  HttpContext.User.GetUserEmail(), ct);
         return Ok(res);
     }
 }
