@@ -17,4 +17,12 @@
       <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Extensions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Extensions\X509Metadata.cs" />
+    </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 using AutoMapper;
 using BettingAgency.Application.Abstraction.IServices;
 using BettingAgency.Application.Abstraction.Models;
-using BettingAgency.Persistence.Abstraction.Entities;
+using BettingAgency.Application.Common;
 using BettingAgency.Persistence.Abstraction.Interfaces;
 
 namespace BettingAgency.Application.Services;
@@ -28,54 +28,49 @@ public class GameService : IGameService
     {
         var user = await _repository.GetUserDetailsByEmail(email, ct);
 
-        var guessNumber = req.Number;
-        var stake = req.Points;
-
         // use must not be allowed to play anymore if the balance have hit zero
         if (user.Balance == 0) throw new Exception("Sorry, you do not have enough balance to play");
 
-        //generate randon number
+        //generate random number
         var randomNumber = new Random().Next(0, Factor);
-        var hasWon = guessNumber == randomNumber;
 
-        if (hasWon)
-            WonTheBet(stake, user);
-        else
-            lostTheBet(stake, user);
+        // if the guessed number is the random number, the bet is won
+        var hasWon = req.GuessNumber == randomNumber;
+        
+        user.Balance = hasWon ?
+            WonTheBet(req.Stake, user.Balance) : LostTheBet(req.Stake, user.Balance);
 
         await _repository.UpdateUser(user, ct);
 
-        convertToString(Status.Won);
-
         return new Response
         {
-            Points = stake,
+            Points = req.Stake,
             AccountBalance = user.Balance,
-            Status = hasWon ? convertToString(Status.Won) : convertToString(Status.Lost)
+            Status = hasWon ? StringUtilities.ConvertToString(Status.Won) : StringUtilities.ConvertToString(Status.Lost)
         };
     }
 
-    private void lostTheBet(int stake, UserEntity user)
+    private int LostTheBet(int stake, int currentBalance)
     {
         var prize = stake * Factor;
-        if (user.Balance - prize <= 0)
+        if (currentBalance - prize <= 0)
         {
-            user.Balance = 0;
-            return;
+            return 0;
         }
 
-        user.Balance -= prize;
+        currentBalance -= prize;
+        
+        return currentBalance;
     }
 
-    private void WonTheBet(int stake, UserEntity user)
+    private int WonTheBet(int stake, int currentBalance)
     {
         var prize = stake * Factor;
 
-        user.Balance += prize;
+         currentBalance += prize;
+         
+         return currentBalance;
     }
 
-    public static string convertToString(Enum eff)
-    {
-        return Enum.GetName(eff.GetType(), eff);
-    }
+    
 }

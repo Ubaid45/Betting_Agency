@@ -28,9 +28,9 @@ public class GameController : ControllerBase
     }
 
     /// <summary>
-    ///     Get List of UserAccounts
+    ///     Get List of Users
     /// </summary>
-    /// <returns>List Of UserAccounts</returns>
+    /// <returns>List Of Users</returns>
     [HttpGet]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> GetList(CancellationToken ct)

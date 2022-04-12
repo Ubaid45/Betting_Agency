@@ -2,7 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mime;
 using System.Text;
 using BettingAgency.Application.Abstraction.IServices;
-using BettingAgency.Application.Abstraction.Models.JWT;
+using BettingAgency.Application.Abstraction.Models;
 using BettingAgency.Application.Common;
 using BettingAgency.Application.Middleware;
 using BettingAgency.Application.Services;

@@ -12,6 +12,5 @@ namespace BettingAgency.Application.Abstraction.Models {
             get;
             set;
         }
-        public UserLogins() {}
     }
 }
