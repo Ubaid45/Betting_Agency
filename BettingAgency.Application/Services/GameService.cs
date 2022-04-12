@@ -44,7 +44,8 @@ public class GameService : IGameService
 
         return new Response
         {
-            Points = req.Stake,
+            LuckyNumber = randomNumber,
+            Points = hasWon ? req.Stake * Factor: req.Stake * Factor * -1,
             AccountBalance = user.Balance,
             Status = hasWon ? StringUtilities.ConvertToString(Status.Won) : StringUtilities.ConvertToString(Status.Lost)
         };
